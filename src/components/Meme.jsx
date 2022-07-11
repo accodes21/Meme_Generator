@@ -17,9 +17,9 @@ function Meme(){
 
     console.log(allMemes)
     function getMemeImage(){
-        const memesArray = allMemes.data.memes
-        const randomNo = Math.floor(Math.random() * memesArray.length)
-        const url = memesArray[randomNo].url
+        // const memesArray = allMemes.data.memes
+        const randomNo = Math.floor(Math.random() * allMemes.length)
+        const url = allMemes[randomNo].url
         setMeme(prevMeme => ({
             ...prevMeme,
             randomImage: url
