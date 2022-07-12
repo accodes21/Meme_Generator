@@ -1,4 +1,5 @@
 import React from "react";
+import * as htmlToImage from 'html-to-image';
 
 function Meme(){
     const [meme, setMeme] = React.useState({
@@ -7,17 +8,16 @@ function Meme(){
         randomImage: "http://i.imgflip.com/1bij.jpg"
     })
 
+    //Memes Data
     const [allMemes, setAllMemes] = React.useState([])
-
     React.useEffect(()=>{
         fetch("https://api.imgflip.com/get_memes")
         .then(res => res.json())
         .then(data => setAllMemes(data.data.memes))
     },[])
 
-    console.log(allMemes)
+    //Random Images
     function getMemeImage(){
-        // const memesArray = allMemes.data.memes
         const randomNo = Math.floor(Math.random() * allMemes.length)
         const url = allMemes[randomNo].url
         setMeme(prevMeme => ({
@@ -26,6 +26,7 @@ function Meme(){
         }))
     }
 
+    //Updating Text
     function handleChange(event){
         const {name,value} = event.target
         setMeme(prevMeme => ({
@@ -33,6 +34,20 @@ function Meme(){
             [name]:value
         }))
     }
+
+    // To capture the image
+    function capture() {
+        htmlToImage
+            .toPng(document.querySelector(".meme"), { quality: 1 })
+            .then(function (data) {
+                console.log(data);
+                let link = document.createElement("a");
+                link.download = "memeimg.png";
+                link.href = data;
+                link.click();
+            });
+    }
+
     return(
         <>
         <section>
@@ -52,6 +67,9 @@ function Meme(){
                 onChange={handleChange}/>
 
                 <button className="form-btn" onClick={getMemeImage}>Get New Image✨</button>
+                
+                <button className="form-btn" onClick={capture}>Download Meme</button>
+                
             </div>
             <div className="meme">
                 <img src={meme.randomImage} alt="" className="meme--image" />
