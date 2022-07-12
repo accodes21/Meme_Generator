@@ -68,7 +68,7 @@ function Meme(){
 
                 <button className="form-btn" onClick={getMemeImage}>Get New Image✨</button>
                 
-                <button className="form-btn" onClick={capture}>Download Meme</button>
+                <button className="form-btn save" onClick={capture}>Download Meme⬇️</button>
                 
             </div>
             <div className="meme">
