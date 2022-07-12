@@ -69,7 +69,6 @@ section{
 
 .meme--image {
   max-width: 100%;
-  /* max-height: 60vh; */
   border-radius: 3px;
 }
 
@@ -102,5 +101,13 @@ section{
   top: 0;
 }
 .bottom{
-  bottom: 0;
+  bottom: 15px;
+}
+
+.save{
+  padding: 10px;
+}
+
+.form-btn:hover{
+  background-color: #282727;
 }
