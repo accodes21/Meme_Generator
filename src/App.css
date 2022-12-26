@@ -24,6 +24,8 @@ header{
   background-color: #201c1c;
   color: aliceblue;
   padding: .5em;
+  border-top-right-radius: 0.375rem; 
+  border-top-left-radius: 0.375rem; 
 }
 
 .logo{
@@ -36,6 +38,8 @@ section{
   padding: 25px;
   padding-left: 45px;
   padding-right: 45px;
+  border-bottom-right-radius: 0.375rem;
+border-bottom-left-radius: 0.375rem; 
 }
 
 .form{
